@@ -26,13 +26,16 @@ class Block implements BlockShape {
 
 class Blockchain {
   private blocks: Block[];
+
   constructor() {
     this.blocks = [];
   }
+
   private getPrevHash() {
     if (this.blocks.length === 0) return "";
     return this.blocks[this.blocks.length - 1].hash;
   }
+
   public addBlock(data: string) {
     const newBlock = new Block(
       this.getPrevHash(),
@@ -41,6 +44,7 @@ class Blockchain {
     );
     this.blocks.push(newBlock);
   }
+
   public getBlocks() {
     return [...this.blocks];
   }
